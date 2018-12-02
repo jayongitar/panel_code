@@ -4,6 +4,7 @@ Created on Sat Dec  1 11:52:02 2018
 
 @author: jay smith
 """
+from mpl_toolkits import mplot3d
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -42,7 +43,8 @@ class fig3D:
     def create_figure(self):
         plt.close()
         fig = plt.figure(num=self.fig_n)
-        ax = Axes3D(fig)
+        ax = plt.axes(projection='3d')
+#        ax = Axes3D(fig)
         return ax
         
         
@@ -93,8 +95,8 @@ class geom():
         self.n_span = n_span
         self.n_chord = n_chord
     def __str__(self):
-        Printf('less trailing zeros <%4.2f, %2.2f, %1.1f>', )
-        return "geometry class containing node method and 4 attributes: {}, {}, {}, {}".format(self.span, self.chord, self.n_span, self.n_chord)
+        return('less trailing zeros <%4.2f, %2.2f, %4.2f, %4.2f>' % (self.span, self.chord, self.n_span, self.n_chord))
+#        return "geometry class containing node method and 4 attributes: {}, {}, {}, {}".format(self.span, self.chord, self.n_span, self.n_chord)
     def generate_nodes(self):
         index_mat = np.zeros((self.n_span, self.n_chord))
         for i in range(self.n_span):
